@@ -1,0 +1,104 @@
+# MoveIt-specific simulation settings
+moveit_sim_hw_interface:
+  joint_model_group: controllers_initial_group_
+  joint_model_group_pose: controllers_initial_pose_
+# Settings for ros_control control loop
+generic_hw_control_loop:
+  loop_hz: 300
+  cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+hardware_interface:
+  joints:
+    - BL_SHOULDER_BASE
+    - BL_ELBOW_SHOULDER
+    - BL_KNEE_ELBOW
+    - BR_SHOULDER_BASE
+    - BR_ELBOW_SHOULDER
+    - BR_KNEE_ELBOW
+    - FL_SHOULDER_BASE
+    - FL_ELBOW_SHOULDER
+    - FL_KNEE_ELBOW
+    - FR_SHOULDER_BASE
+    - FR_ELBOW_SHOULDER
+    - FR_KNEE_ELBOW
+  sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+controller_list:
+  - name: FL_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - FL_SHOULDER_BASE
+      - FL_ELBOW_SHOULDER
+      - FL_KNEE_ELBOW
+jointsta:
+  type: joint_state_controller/JointStateController
+  joints:
+    - FL_SHOULDER_BASE
+    - FL_ELBOW_SHOULDER
+    - FL_KNEE_ELBOW
+  gains:
+    FL_SHOULDER_BASE:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FL_ELBOW_SHOULDER:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FL_KNEE_ELBOW:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+jp:
+  type: effort_controllers/JointPositionController
+  joints:
+    - FL_SHOULDER_BASE
+    - FL_ELBOW_SHOULDER
+    - FL_KNEE_ELBOW
+  gains:
+    FL_SHOULDER_BASE:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FL_ELBOW_SHOULDER:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FL_KNEE_ELBOW:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+jv:
+  type: effort_controllers/JointVelocityController
+  joints:
+    - FL_SHOULDER_BASE
+    - FL_ELBOW_SHOULDER
+    - FL_KNEE_ELBOW
+  gains:
+    FL_SHOULDER_BASE:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FL_ELBOW_SHOULDER:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    FL_KNEE_ELBOW:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

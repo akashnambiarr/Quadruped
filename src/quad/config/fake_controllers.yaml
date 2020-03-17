@@ -1,0 +1,6 @@
+controller_list:
+  - name: fake_FL_controller
+    joints:
+      - FL_SHOULDER_BASE
+      - FL_ELBOW_SHOULDER
+      - FL_KNEE_ELBOW

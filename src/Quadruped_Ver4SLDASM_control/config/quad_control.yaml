@@ -1,0 +1,29 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+arm_position_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - FL_KNEE_ELBOW
+    - FL_ELBOW_SHOULDER
+    - FL_SHOULDER_BASE
+
+  constraints:
+    goal_time: 0.5                   # Override default
+    stopped_velocity_tolerance: 0.02 # Override default
+    FL_KNEE_ELBOW:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+    FL_ELBOW_SHOULDER:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+    FL_SHOULDER_BASE:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+ 
+  gains:
+    FL_KNEE_ELBOW: {p: 10, i: 1, d: 0.001}
+    FL_ELBOW_SHOULDER: {p: 10,  i: 1, d: 0.1}
+    FL_SHOULDER_BASE: {p: 10, i: 1, d: 0.001}
+

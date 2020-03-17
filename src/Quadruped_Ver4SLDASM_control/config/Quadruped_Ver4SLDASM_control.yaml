@@ -1,0 +1,77 @@
+Quadruped_Ver4SLDASM:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  # Position Controllers ---------------------------------------
+  BR_KNEE_ELBOW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BR_KNEE_ELBOW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Position Controllers ---------------------------------------
+  BL_KNEE_ELBOW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BL_KNEE_ELBOW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+  FR_KNEE_ELBOW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: FR_KNEE_ELBOW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+  FL_KNEE_ELBOW_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: FL_KNEE_ELBOW
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+  BL_ELBOW_SHOULDER_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BL_ELBOW_SHOULDER
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+  BR_ELBOW_SHOULDER_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BR_ELBOW_SHOULDER
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+  FR_ELBOW_SHOULDER_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: FR_ELBOW_SHOULDER
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+  FL_ELBOW_SHOULDER_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: FL_ELBOW_SHOULDER
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+ # Position Controllers ---------------------------------------
+  BR_SHOULDER_BASE_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BR_SHOULDER_BASE
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+ # Position Controllers ---------------------------------------
+  BL_SHOULDER_BASE_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BL_SHOULDER_BASE
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+ # Position Controllers ---------------------------------------
+  FL_SHOULDER_BASE_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: FL_SHOULDER_BASE
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+ # Position Controllers ---------------------------------------
+
+  FR_SHOULDER_BASE_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: FR_SHOULDER_BASE
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+

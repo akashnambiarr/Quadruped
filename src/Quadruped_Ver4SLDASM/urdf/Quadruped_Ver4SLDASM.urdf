@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="Quadruped_Ver4SLDASM">
+   
+    <link name="TORSO">
+        
+<inertial>
+            <origin xyz="0.4154 0.68295 0.75135" rpy="0 0 0" />
+            <mass value="3.0375" />
+            <inertia ixx="0.088389" ixy="-7.8794E-20" ixz="-1.5666E-18" iyy="0.2873" iyz="2.4642E-20" izz="0.19892" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/TORSO.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.89804 0.91765 0.92941 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/TORSO.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="FL_BASE">
+        
+<inertial>
+            <origin xyz="-3.33066907387547E-16 -0.0295207534530161 5.06615278728084E-07" rpy="0 0 0" />
+            <mass value="0.902828883965" />
+            <inertia ixx="0.00132988323990108" ixy="-1.44056320495885E-17" ixz="5.80611455541909E-18" iyy="0.000399723625886206" iyz="-6.1064909911852E-09" izz="0.00132931468992926" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_BASE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_BASE.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="FL_BASE_TORSO" type="fixed">
+        <origin xyz="0.8094 -0.52835 0.71245" rpy="1.5708 1.5708 0" />
+        <parent link="TORSO" />
+        <child link="FL_BASE" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="FL_SHOULDER">
+        
+<inertial>
+            <origin xyz="-1.49380507963315E-12 0.0581348959759068 -2.14668700032616E-05" rpy="0 0 0" />
+            <mass value="0.981805915216205" />
+            <inertia ixx="0.00135659161194753" ixy="3.83425004141481E-13" ixz="5.13991084088749E-15" iyy="0.00136958131837369" iyz="6.09271732007112E-09" izz="0.000446612811708962" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_SHOULDER.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_SHOULDER.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="FL_SHOULDER_BASE" type="revolute">
+        <origin xyz="0 0.01 0" rpy="3.1416 0 3.1416" />
+        <parent link="FL_BASE" />
+        <child link="FL_SHOULDER" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="FL_ELBOW">
+        
+<inertial>
+            <origin xyz="0.202821941713367 -0.0839656006445939 -0.0694852570156884" rpy="0 0 0" />
+            <mass value="1.57493079597608" />
+            <inertia ixx="0.00128761130875283" ixy="4.27510426111187E-05" ixz="7.52068011273911E-10" iyy="0.0058355144385604" iyz="-4.28728438401583E-07" izz="0.00518939685005104" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_ELBOW.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_ELBOW.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="FL_ELBOW_SHOULDER" type="revolute">
+        <origin xyz="0 0.059 0.069" rpy="0 0 -1.5708" />
+        <parent link="FL_SHOULDER" />
+        <child link="FL_ELBOW" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.0" upper="0.0" effort="90" velocity="100.0" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="FL_KNEE">
+        
+<inertial>
+            <origin xyz="-0.0805945928983661 -0.0796988032622525 -0.0560933136108762" rpy="0 0 0" />
+            <mass value="0.718502100834517" />
+            <inertia ixx="0.000306163447470287" ixy="-4.14795246895254E-05" ixz="-1.61163919497187E-09" iyy="0.00455169448929418" iyz="4.33506766692842E-08" izz="0.00448974695858997" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_KNEE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FL_KNEE.STL" />FL
+            </geometry>
+            <surface>
+                <friction>
+                    <ode>
+                        <mu>0.01</mu>
+                        <mu2>0.01</mu2>
+                    </ode>
+                </friction>
+            </surface> 
+        </collision>
+    </link>
+    <joint name="FL_KNEE_ELBOW" type="revolute">
+        <origin xyz="0.312 -0.088 -0.012" rpy="0 0 0" />
+        <parent link="FL_ELBOW" />
+        <child link="FL_KNEE" />
+        <axis xyz="0 0 1" />
+        <limit lower="0.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="FR_BASE">
+              
+<inertial>
+            <origin xyz="-2.22044604925031E-16 -0.0295207534530161 5.06615278617062E-07" rpy="0 0 0" />
+            <mass value="0.902828883965" />
+            <inertia ixx="0.00132988323990108" ixy="-1.44074304783624E-17" ixz="5.80298520537107E-18" iyy="0.000399723625886205" iyz="-6.10649099142943E-09" izz="0.00132931468992926" />
+        </inertial>
+
+        <visual>                    
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_BASE.STL" />
+            </geometry>                    
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision> 
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_BASE.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="FR_BASE_TORSO" type="fixed">
+        <origin xyz="0.8094 -0.97435 0.71245" rpy="1.5708 1.5708 0" />
+        <parent link="TORSO" />
+        <child link="FR_BASE" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="FR_SHOULDER">
+        
+<inertial>
+            <origin xyz="-1.49380507963315E-12 -0.0330214668700037 0.000865104024093233" rpy="0 0 0" />
+            <mass value="0.981805915216205" />
+            <inertia ixx="0.00135659161194753" ixy="5.13987602341806E-15" ixz="-3.83424885537339E-13" iyy="0.000446612811708962" iyz="-6.09271732009612E-09" izz="0.00136958131837369" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_SHOULDER.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_SHOULDER.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="FR_SHOULDER_BASE" type="revolute">
+        <origin xyz="0 0.069 -0.033" rpy="-1.5708 0 3.1416" />
+        <parent link="FR_BASE" />
+        <child link="FR_SHOULDER" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="FR_ELBOW">
+        
+<inertial>
+            <origin xyz="-0.202821941840251 -0.0839656006567835 -0.0685147429999977" rpy="0 0 0" />
+            <mass value="1.57493079462878" />
+            <inertia ixx="0.00128761130780894" ixy="-4.27510413870418E-05" ixz="7.53399938982439E-10" iyy="0.00583551443452101" iyz="4.28728908288762E-07" izz="0.00518939684608397" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_ELBOW.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_ELBOW.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="FR_ELBOW_SHOULDER" type="revolute">
+        <origin xyz="0 -0.102 0" rpy="1.5708 1.5708 0" />
+        <parent link="FR_SHOULDER" />
+        <child link="FR_ELBOW" />
+        <axis xyz="0 0 1" />
+        <limit lower="0" upper="1.57" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="FR_KNEE">
+        
+<inertial>
+            <origin xyz="-0.080594593437154 -0.079698803508231 0.0609066859829872" rpy="0 0 0" />
+            <mass value="0.718502084545039" />
+            <inertia ixx="0.000306163435542528" ixy="-4.14795106946315E-05" ixz="-1.59700825518339E-09" iyy="0.00455169444656445" iyz="4.33566370585318E-08" izz="0.004489746916219" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_KNEE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/FR_KNEE.STL" />
+            </geometry>
+            <surface>
+                <friction>
+                    <ode>
+                        <mu>0.01</mu>
+                        <mu2>0.01</mu2>
+                    </ode>
+                </friction>
+            </surface>            
+        </collision>
+    </link>
+    <joint name="FR_KNEE_ELBOW" type="revolute">
+        <origin xyz="-0.312 -0.088 -0.009" rpy="3.1416 0 3.1416" />
+        <parent link="FR_ELBOW" />
+        <child link="FR_KNEE" />
+        <axis xyz="0 0 1" />
+        <limit lower="0.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="BL_BASE">
+        
+<inertial>
+            <origin xyz="-4.44089209850063E-16 -0.029520753453016 5.06615278728084E-07" rpy="0 0 0" />
+            <mass value="0.902828883965" />
+            <inertia ixx="0.00132988323990108" ixy="-1.44071307294385E-17" ixz="5.81619344611965E-18" iyy="0.000399723625886206" iyz="-6.10649099118549E-09" izz="0.00132931468992926" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_BASE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_BASE.STL" />
+            </geometry>
+
+        </collision>
+    </link>
+    <joint name="BL_BASE_TORSO" type="fixed">
+        <origin xyz="0.021396 -0.52835 0.71245" rpy="1.5708 -1.5708 0" />
+        <parent link="TORSO" />
+        <child link="BL_BASE" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="BL_SHOULDER">
+        
+<inertial>
+            <origin xyz="-1.49347201272576E-12 0.0581348959759067 -2.14668700031506E-05" rpy="0 0 0" />
+            <mass value="0.981805915216205" />
+            <inertia ixx="0.00135659161194753" ixy="3.83424977967098E-13" ixz="5.13994119258615E-15" iyy="0.00136958131837369" iyz="6.09271732008847E-09" izz="0.000446612811708962" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_SHOULDER.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_SHOULDER.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="BL_SHOULDER_BASE" type="revolute">
+        <origin xyz="0 0.01 0" rpy="0 0 0" />
+        <parent link="BL_BASE" />
+        <child link="BL_SHOULDER" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.5" upper="1.5" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="BL_ELBOW">
+        
+<inertial>
+            <origin xyz="0.202821941849011 -0.083965600657506 -0.0694852569989" rpy="0 0 0" />
+            <mass value="1.57493079453405" />
+            <inertia ixx="0.00128761130775031" ixy="4.27510413166955E-05" ixz="7.534884996097E-10" iyy="0.00583551443426363" iyz="-4.28728937076429E-07" izz="0.00518939684583941" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_ELBOW.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_ELBOW.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="BL_ELBOW_SHOULDER" type="revolute">
+        <origin xyz="0 0.059 0.069" rpy="0 0 -1.5708" />
+        <parent link="BL_SHOULDER" />
+        <child link="BL_ELBOW" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.0" upper="0.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="BL_KNEE">
+        
+<inertial>
+            <origin xyz="-0.0805945933959598 -0.0796988034895124 0.0609066860165789" rpy="0 0 0" />
+            <mass value="0.718502085892346" />
+            <inertia ixx="0.00030616343648579" ixy="-4.14795117535847E-05" ixz="-1.5981698308491E-09" iyy="0.00455169444987353" iyz="4.3356167515013E-08" izz="0.00448974691945513" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_KNEE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BL_KNEE.STL" />
+            </geometry>
+            <surface>
+                <friction>
+                    <ode>
+                        <mu>0.01</mu>
+                        <mu2>0.01</mu2>
+                    </ode>
+                </friction>
+            </surface> 
+        </collision>
+    </link>
+    <joint name="BL_KNEE_ELBOW" type="revolute">
+        <origin xyz="0.312 -0.088 -0.129" rpy="0 0 0" />
+        <parent link="BL_ELBOW" />
+        <child link="BL_KNEE" />
+        <axis xyz="0 0 1" />
+        <limit lower="0.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="BR_BASE">
+        
+<inertial>
+            <origin xyz="-2.22044604925031E-16 -0.029520753453016 5.06615278728084E-07" rpy="0 0 0" />
+            <mass value="0.902828883965" />
+            <inertia ixx="0.00132988323990108" ixy="-1.44245181180893E-17" ixz="5.79230640599988E-18" iyy="0.000399723625886205" iyz="-6.1064909914441E-09" izz="0.00132931468992926" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_BASE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_BASE.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="BR_BASE_TORSO" type="fixed">
+        <origin xyz="0.021396 -0.97435 0.71245" rpy="1.5708 -1.5708 0" />
+        <parent link="TORSO" />
+        <child link="BR_BASE" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="BR_SHOULDER">
+        
+<inertial>
+            <origin xyz="-1.49380507963315E-12 -0.0330214668700033 0.000865104024093309" rpy="0 0 0" />
+            <mass value="0.981805915216204" />
+            <inertia ixx="0.00135659161194753" ixy="5.13992501011094E-15" ixz="-3.83424987863033E-13" iyy="0.000446612811708961" iyz="-6.09271732013362E-09" izz="0.00136958131837369" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_SHOULDER.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_SHOULDER.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="BR_SHOULDER_BASE" type="revolute">
+        <origin xyz="0 0.069 0.033" rpy="1.5708 0 0" />
+        <parent link="BR_BASE" />
+        <child link="BR_SHOULDER" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="BR_ELBOW">
+        
+<inertial>
+            <origin xyz="-0.202821941713367 -0.0839656006445941 -0.0685147429843117" rpy="0 0 0" />
+            <mass value="1.5749307959761" />
+            <inertia ixx="0.00128761130875284" ixy="-4.27510426111134E-05" ixz="7.52068017353546E-10" iyy="0.00583551443856057" iyz="4.28728438401183E-07" izz="0.00518939685005121" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_ELBOW.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_ELBOW.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="BR_ELBOW_SHOULDER" type="revolute">
+        <origin xyz="0 -0.102 0" rpy="1.5708 1.5708 0" />
+        <parent link="BR_SHOULDER" />
+        <child link="BR_ELBOW" />
+        <axis xyz="0 0 1" />
+        <limit lower="0.0" upper="1.57" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    <link name="BR_KNEE">
+        
+<inertial>
+            <origin xyz="-0.0805945928983662 -0.0796988032622525 0.0609066863891238" rpy="0 0 0" />
+            <mass value="0.718502100834516" />
+            <inertia ixx="0.000306163447470287" ixy="-4.14795246895285E-05" ixz="-1.61163918549265E-09" iyy="0.00455169448929417" iyz="4.33506766674435E-08" izz="0.00448974695858996" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_KNEE.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://Quadruped_Ver4SLDASM/meshes/BR_KNEE.STL" />
+            </geometry>
+            <surface>
+                <friction>
+                    <ode>
+                        <mu>0.01</mu>
+                        <mu2>0.01</mu2>
+                    </ode>
+                </friction>
+            </surface> 
+        </collision>
+    </link>
+    <joint name="BR_KNEE_ELBOW" type="revolute">
+        <origin xyz="-0.312 -0.088 -0.009" rpy="3.1416 0 3.1416" />
+        <parent link="BR_ELBOW" />
+        <child link="BR_KNEE" />
+        <axis xyz="0 0 1" />
+        <limit lower="0.0" upper="3.0" effort="90" velocity="100" />
+        <dynamics damping="0.7" friction="0" />
+    </joint>
+    
+<transmission name="tran1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BR_KNEE_ELBOW">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor1">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BL_KNEE_ELBOW">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor2">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FR_KNEE_ELBOW">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor3">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FL_KNEE_ELBOW">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FL_ELBOW_SHOULDER">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FR_ELBOW_SHOULDER">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran7">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BR_ELBOW_SHOULDER">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran8">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BL_ELBOW_SHOULDER">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran9">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BL_SHOULDER_BASE">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran10">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BR_SHOULDER_BASE">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran11">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FL_SHOULDER_BASE">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="tran12">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FR_SHOULDER_BASE">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </joint>
+        <actuator name="motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_FL_SHOULDER_BASE">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FL_SHOULDER_BASE">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="FL_SHOULDER_BASE_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_FL_ELBOW_SHOULDER">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FL_ELBOW_SHOULDER">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="FL_ELBOW_SHOULDER_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_FL_KNEE_ELBOW">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FL_KNEE_ELBOW">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="FL_KNEE_ELBOW_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_FR_SHOULDER_BASE">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FR_SHOULDER_BASE">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="FR_SHOULDER_BASE_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_FR_ELBOW_SHOULDER">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FR_ELBOW_SHOULDER">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="FR_ELBOW_SHOULDER_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_FR_KNEE_ELBOW">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="FR_KNEE_ELBOW">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="FR_KNEE_ELBOW_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_BL_SHOULDER_BASE">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BL_SHOULDER_BASE">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="BL_SHOULDER_BASE_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_BL_ELBOW_SHOULDER">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BL_ELBOW_SHOULDER">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="BL_ELBOW_SHOULDER_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_BL_KNEE_ELBOW">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BL_KNEE_ELBOW">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="BL_KNEE_ELBOW_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_BR_SHOULDER_BASE">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BR_SHOULDER_BASE">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="BR_SHOULDER_BASE_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_BR_ELBOW_SHOULDER">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BR_ELBOW_SHOULDER">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="BR_ELBOW_SHOULDER_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_BR_KNEE_ELBOW">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="BR_KNEE_ELBOW">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="BR_KNEE_ELBOW_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/Quadruped_Ver4SLDASM</robotNamespace>
+        </plugin>
+    </gazebo>
+    <gazebo reference = "TORSO">
+        <turnGravityOff> true </turnGravityOff>
+    </gazebo>
+    <!-- <gazebo reference = "FL_KNEE">
+        <turnGravityOff> true </turnGravityOff>
+    </gazebo> 
+    <gazebo reference = "BR_KNEE">
+        <turnGravityOff> true </turnGravityOff>
+    </gazebo> 
+    <gazebo reference = "FR_KNEE">
+        <turnGravityOff> true </turnGravityOff>
+    </gazebo> 
+    <gazebo reference = "BL_KNEE">
+        <turnGravityOff> true </turnGravityOff>
+    </gazebo>  --> 
+       
+</robot>

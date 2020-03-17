@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="Quadruped_Ver4SLDASM">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="FL">
+        <joint name="FL_BASE_TORSO" />
+        <joint name="FL_SHOULDER_BASE" />
+        <joint name="FL_ELBOW_SHOULDER" />
+        <joint name="FL_KNEE_ELBOW" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="ZERO" group="FL">
+        <joint name="FL_ELBOW_SHOULDER" value="0" />
+        <joint name="FL_KNEE_ELBOW" value="0" />
+        <joint name="FL_SHOULDER_BASE" value="0" />
+    </group_state>
+    <group_state name="ONE" group="FL">
+        <joint name="FL_ELBOW_SHOULDER" value="-0.5072" />
+        <joint name="FL_KNEE_ELBOW" value="0.6166" />
+        <joint name="FL_SHOULDER_BASE" value="0" />
+    </group_state>
+    <group_state name="TWO" group="FL">
+        <joint name="FL_ELBOW_SHOULDER" value="-1.1039" />
+        <joint name="FL_KNEE_ELBOW" value="1.3923" />
+        <joint name="FL_SHOULDER_BASE" value="0" />
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="BALL" parent_link="FL_KNEE" group="FL" parent_group="FL" />
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="FL_KNEE_ELBOW" type="floating" parent_frame="FL_ELBOW" child_link="FL_KNEE" />
+    <virtual_joint name="FL_ELBOW_SHOULDER" type="floating" parent_frame="FL_SHOULDER" child_link="FL_ELBOW" />
+    <virtual_joint name="FL_SHOULDER_BASE" type="floating" parent_frame="FL_BASE" child_link="FL_SHOULDER" />
+    <virtual_joint name="FL_BASE_TORSO" type="fixed" parent_frame="TORSO" child_link="FL_BASE" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="BL_BASE" link2="BL_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="BL_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="BL_BASE" link2="BR_BASE" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="BR_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="BR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_BASE" link2="TORSO" reason="Adjacent" />
+    <disable_collisions link1="BL_ELBOW" link2="BL_KNEE" reason="Adjacent" />
+    <disable_collisions link1="BL_ELBOW" link2="BL_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="BL_ELBOW" link2="BR_BASE" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="BR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BL_ELBOW" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="BR_BASE" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="BR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BL_KNEE" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="BR_BASE" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="BR_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="BR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BL_SHOULDER" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="BR_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="BR_BASE" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_BASE" link2="TORSO" reason="Adjacent" />
+    <disable_collisions link1="BR_ELBOW" link2="BR_KNEE" reason="Adjacent" />
+    <disable_collisions link1="BR_ELBOW" link2="BR_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="BR_ELBOW" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BR_ELBOW" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_KNEE" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FL_BASE" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FR_KNEE" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="BR_SHOULDER" link2="TORSO" reason="Never" />
+    <disable_collisions link1="FL_BASE" link2="FL_ELBOW" reason="Never" />
+    <disable_collisions link1="FL_BASE" link2="FL_KNEE" reason="Never" />
+    <disable_collisions link1="FL_BASE" link2="FL_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="FL_BASE" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="FL_BASE" link2="FR_ELBOW" reason="Never" />
+    <disable_collisions link1="FL_BASE" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="FL_BASE" link2="TORSO" reason="Adjacent" />
+    <disable_collisions link1="FL_ELBOW" link2="FL_KNEE" reason="Adjacent" />
+    <disable_collisions link1="FL_ELBOW" link2="FL_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="FL_ELBOW" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="FL_ELBOW" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="FL_KNEE" link2="FL_SHOULDER" reason="Never" />
+    <disable_collisions link1="FL_SHOULDER" link2="FR_BASE" reason="Never" />
+    <disable_collisions link1="FL_SHOULDER" link2="FR_SHOULDER" reason="Never" />
+    <disable_collisions link1="FL_SHOULDER" link2="TORSO" reason="Never" />
+    <disable_collisions link1="FR_BASE" link2="FR_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="FR_BASE" link2="TORSO" reason="Adjacent" />
+    <disable_collisions link1="FR_ELBOW" link2="FR_KNEE" reason="Adjacent" />
+    <disable_collisions link1="FR_ELBOW" link2="FR_SHOULDER" reason="Adjacent" />
+    <disable_collisions link1="FR_SHOULDER" link2="TORSO" reason="Never" />
+</robot>
